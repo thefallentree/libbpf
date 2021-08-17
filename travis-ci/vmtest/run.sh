@@ -454,7 +454,7 @@ sudo umount "$mnt"
 
 echo "Starting VM with $(nproc) CPUs..."
 
-cat /proc/cpu-info
+cat /proc/cpuinfo
 sudo kvm-ok || true
 sudo mod_probe kvm kvm_intel || true
 sudo kvm-ok || true
