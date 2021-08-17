@@ -454,7 +454,7 @@ sudo umount "$mnt"
 
 echo "Starting VM with $(nproc) CPUs..."
 
-if kvm-ok ; then
+if $(sudo kvm-ok) ; then
   accel="-cpu kvm64 -enable-kvm"
 else
   accel="-cpu qemu64 -machine accel=tcg"
