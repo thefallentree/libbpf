@@ -456,13 +456,13 @@ echo "Starting VM with $(nproc) CPUs..."
 
 cat /proc/cpuinfo
 sudo kvm-ok || true
-sudo mod_probe kvm kvm_intel || true
+sudo modprobe kvm kvm_intel || true
 sudo kvm-ok || true
 
 if kvm-ok ; then
   accel="-cpu kvm64 -enable-kvm"
 else
-  accel="-cpu qemu64 -machine accel=tcg"
+  accel="-cpu host -machine accel=tcg"
 fi
 qemu-system-x86_64 -nodefaults -display none -serial mon:stdio \
   ${accel} -smp "$(nproc)" -m 4G \
