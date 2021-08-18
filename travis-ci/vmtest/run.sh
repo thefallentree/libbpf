@@ -457,7 +457,7 @@ echo "Starting VM with $(nproc) CPUs..."
 if kvm-ok ; then
   accel="-cpu kvm64 -enable-kvm"
 else
-  accel="-cpu qemu64 -machine accel=tcg"
+  accel="-cpu max -machine accel=tcg"
 fi
 qemu-system-x86_64 -nodefaults -display none -serial mon:stdio \
   ${accel} -smp "$(nproc)" -m 4G \
